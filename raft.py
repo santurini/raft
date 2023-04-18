@@ -78,7 +78,7 @@ class RAFT(nn.Module):
 
         for itr in range(iters):
             coords1 = coords1.detach()
-            corr = self.corr_fn(coords1, fmap1, fmap2, self.corr_levels, self.corr_radius)
+            corr = correlation(coords1, fmap1, fmap2, self.corr_levels, self.corr_radius)
 
             flow = coords1 - coords0
             net, up_mask, delta_flow = self.update_block(net, inp, corr, flow)
