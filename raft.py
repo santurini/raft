@@ -5,11 +5,10 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from optical_flow.models.raft.update import BasicUpdateBlock, SmallUpdateBlock
-from optical_flow.models.raft.extractor import BasicEncoder, SmallEncoder
-from optical_flow.models.raft.corr import correlation
-from optical_flow.models.raft.utils import coords_grid, upflow
-from core import PROJECT_ROOT
+from update import BasicUpdateBlock, SmallUpdateBlock
+from extractor import BasicEncoder, SmallEncoder
+from corr import correlation
+from utils import coords_grid, upflow
 
 pylogger = logging.getLogger(__name__)
 
@@ -18,7 +17,7 @@ class RAFT(nn.Module):
             self,
             small: bool = True,
             scale_factor: int = 4,
-            pretrained: bool = True
+            pretrained: str = None
     ):
         super().__init__()
 
