@@ -34,7 +34,7 @@ class RAFT(nn.Module):
 
             if pretrained:
                 pylogger.info('Loading RAFT pretrained weights')
-                state_dict = torch.load(f'{PROJECT_ROOT}/src/optical_flow/weights/raft-small.pth')
+                state_dict = torch.load('./weights/raft-small.pth')
                 new_dict = OrderedDict([(k.partition('module.')[-1], v) for k, v in state_dict.items()])
                 self.load_state_dict(new_dict, strict=True)
         
@@ -49,7 +49,7 @@ class RAFT(nn.Module):
 
             if pretrained:
                 pylogger.info('Loading <RAFT> pretrained weights')
-                state_dict = torch.load(f'{PROJECT_ROOT}/src/optical_flow/weights/raft-sintel.pth')
+                state_dict = torch.load('./weights/raft-sintel.pth')
                 new_dict = OrderedDict([(k.partition('module.')[-1], v) for k, v in state_dict.items()])
                 self.load_state_dict(new_dict)
 
